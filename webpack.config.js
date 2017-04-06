@@ -4,7 +4,7 @@ const webpack = require('webpack');
 module.exports = {
     devtool: 'source-map',
     entry: [
-        'webpack/hot/dev-server',
+        'webpack-hot-middleware/client',
         path.join(__dirname, 'client/index.js')],
     output: {
         path: path.join(__dirname, 'dist'),
@@ -14,11 +14,6 @@ module.exports = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
-        new webpack.DefinePlugin({
-            'process.env': {
-                NODE_ENV: JSON.stringify('production'),
-            },
-        }),
         new webpack.optimize.UglifyJsPlugin({
             compressor: {
                 warnings: false,
@@ -29,8 +24,9 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                use: ['babel-loader'],
+                use: ['react-hot-loader', 'babel-loader'],
                 exclude: /node_modules/,
+                include: path.join(__dirname, 'client'),
             },
         ],
     },
