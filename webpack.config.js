@@ -2,7 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    devtool: 'source-map',
+    devtool: 'eval-cheap-module-source-map',
     entry: [
         'webpack-hot-middleware/client',
         path.join(__dirname, 'client/index.js')],
@@ -23,7 +23,7 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.js$/,
+                test: /\.js$|\.jsx?$/,
                 use: ['react-hot-loader', 'babel-loader'],
                 exclude: /node_modules/,
                 include: path.join(__dirname, 'client'),
@@ -31,6 +31,6 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: ['.js'],
+        extensions: ['.js', '.jsx'],
     },
 };

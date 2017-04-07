@@ -22,7 +22,8 @@
             0,
             "never"
         ],
-        "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }]
+        "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }],
+        "react/jsx-indent": ["warn",4]
     }
 
 }
