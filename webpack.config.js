@@ -28,9 +28,20 @@ module.exports = {
                 exclude: /node_modules/,
                 include: path.join(__dirname, 'client'),
             },
+            {
+                test: /\.css$/,
+                use: ['style-loader', 'css-loader'],
+            },
+            {
+                test: /\.(png|jpg|gif|svg|eot|ttf|woff|woff2)$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                },
+            },
         ],
     },
     resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.css'],
     },
 };
